@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native'
 
 import fixedValues from './fixed-values'
-import type { Size } from './sizes'
+import type { Size } from '.'
 
 type FontValues = { [key in Size]: number }
 type FontSize = { [key in Size]: string }

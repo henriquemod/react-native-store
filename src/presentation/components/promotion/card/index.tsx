@@ -1,28 +1,25 @@
+import { Image } from 'expo-image'
 import * as React from 'react'
 import { Dimensions, View } from 'react-native'
 
-import Button from '../button'
-import Box from '../layout/box'
-import Typography from '../typography'
-import { Container } from './style'
-import { Image } from 'expo-image'
+import { type Business } from 'src/data/contracts/business'
 import { fixedValues } from 'src/presentation/style'
+import Button from '../../button'
+import Box from '../../layout/box'
+import Typography from '../../typography'
+import { Container } from './style'
 
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
 
 export namespace NPromotion {
-  export interface Props {
-    title: string
-    btnLabel: string
-    imgUrl: string
-  }
+  export type Props = Business.Promotion
 }
 
 const Promotion = (props: NPromotion.Props) => {
   return (
     <Box
-      color="orange"
+      color={props.color ?? 'white'}
       width={width - width * 0.33}
       height={height - height * 0.86}
     >
@@ -30,8 +27,8 @@ const Promotion = (props: NPromotion.Props) => {
         <View>
           <Typography>{props.title}</Typography>
         </View>
-        <Button>
-          <Typography color="orange" strong size="xs" dark>
+        <Button rounded>
+          <Typography color={props.color} strong size="xs" dark>
             {props.btnLabel}
           </Typography>
         </Button>

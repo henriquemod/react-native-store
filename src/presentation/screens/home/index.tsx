@@ -1,15 +1,17 @@
-import React from 'react'
-import { Text, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
+import React from 'react'
 import styled from 'styled-components/native'
-import Box from 'src/presentation/components/layout/box'
-import Promotion from 'src/presentation/components/promotion'
+
 import { colors } from 'src/presentation/style'
+import PromotionCarousel from 'src/presentation/components/promotion/carousel'
+import Chapter from 'src/presentation/components/chapter'
+import Button from 'src/presentation/components/button'
+import Typography from 'src/presentation/components/typography'
+import CategoryCarousel from 'src/presentation/components/category/carousel'
 
 const Container = styled.View`
-  flex: 1;
+  display: flex;
   background-color: ${colors.white};
-  align-items: center;
   justify-content: center;
 `
 
@@ -17,11 +19,30 @@ const HomeScreen = () => {
   return (
     <Container>
       <StatusBar style="auto" />
-      <Promotion
-        title="20% OFF DURING THE WEEKEND"
-        btnLabel="Get Now"
-        imgUrl="https://cdn.discordapp.com/attachments/891477812303757314/1127280361848705105/hand-holding-shopping-bags-plain-background_23-2148286215-removebg-preview_122.png"
-      />
+      <Chapter
+        title="Hello Fola"
+        subtitle="Lets start shopping!"
+        style={{
+          marginTop: 50,
+        }}
+      >
+        <PromotionCarousel />
+      </Chapter>
+      <Chapter
+        title="Top Categories"
+        endornment={
+          <Button>
+            <Typography color="orange" size="xs" dark>
+              See All
+            </Typography>
+          </Button>
+        }
+        style={{
+          marginTop: 50,
+        }}
+      >
+        <CategoryCarousel />
+      </Chapter>
     </Container>
   )
 }
