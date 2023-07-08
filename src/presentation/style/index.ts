@@ -1,0 +1,5 @@
+export { default as fontSize } from './fonts'
+export { default as spacings } from './spacings'
+export { default as fixedValues } from './fixed-values'
+export { default as colors } from './colors'
+export * from './sizes'
