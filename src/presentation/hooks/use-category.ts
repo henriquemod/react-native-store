@@ -1,5 +1,7 @@
+import { propOr } from 'ramda'
 import * as React from 'react'
-import { type Business } from 'src/data/contracts/business'
+
+import type { Business } from 'src/data/contracts/business'
 import type { AxiosHttpClient } from 'src/infra/http/axios-http-client/axios-http-client'
 
 namespace UseCategory {
@@ -22,10 +24,10 @@ const useCategory = (props: UseCategory.Props): UseCategory.Return => {
   >()
 
   const loadCategories = async () => {
-    const categories = await props.httpClient.get(
+    const categories = await props.httpClient.get<Business.Category[]>(
       'https://fakestoreapi.com/products/categories',
     )
-    setCategories(categories.body)
+    setCategories(propOr([], 'body', categories))
   }
 
   const selectCategory = (category: Business.Category | undefined) => {

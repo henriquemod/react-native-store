@@ -1,3 +1,4 @@
+import { propOr } from 'ramda'
 import * as React from 'react'
 
 import type { Business } from 'src/data/contracts/business'
@@ -19,18 +20,18 @@ const useProduct = (props: UseProduct.Props): UseProduct.Return => {
   const [products, setProducts] = React.useState<Business.Product[]>([])
 
   const loadAllProducts = async () => {
-    const products = await props.httpClient.get(
+    const products = await props.httpClient.get<Business.Product[]>(
       'https://fakestoreapi.com/products',
     )
-    setProducts(products.body)
+    setProducts(propOr([], 'body', products))
   }
 
   const loadByCategory = async (category: Business.Category) => {
     const encodeCategory = encodeURIComponent(category)
-    const products = await props.httpClient.get(
+    const products = await props.httpClient.get<Business.Product[]>(
       `https://fakestoreapi.com/products/category/${encodeCategory}`,
     )
-    setProducts(products.body)
+    setProducts(propOr([], 'body', products))
   }
 
   const refetch = async (category?: Business.Category) => {

@@ -1,36 +1,18 @@
-import {
-  type HttpGetClient,
-  type HttpPostClient,
-  type HttpPostParams,
-  type HttpResponse,
-} from 'src/data/protocols/http'
+import type { HttpGetClient, HttpResponse } from 'src/data/protocols/http'
 import axios, { type AxiosError, type AxiosResponse } from 'axios'
 
-export class AxiosHttpClient
-  implements HttpPostClient<any, any>, HttpGetClient<any, any>
-{
-  async get(url: string, params?: any): Promise<HttpResponse<any>> {
-    let httpResponse: AxiosResponse<any>
+export class AxiosHttpClient implements HttpGetClient {
+  async get<Response = object, Params = object>(
+    url: string,
+    params?: Params,
+  ): Promise<HttpResponse<Response>> {
+    let httpResponse: AxiosResponse<Response>
 
     try {
-      httpResponse = await axios.get(url, params)
+      httpResponse = await axios.get<Response>(url, { params })
     } catch (error) {
-      httpResponse = (error as AxiosError).response!
-    }
-
-    return {
-      statusCode: httpResponse.status,
-      body: httpResponse.data,
-    }
-  }
-
-  async post(params: HttpPostParams<any>): Promise<HttpResponse<any>> {
-    let httpResponse: AxiosResponse<any>
-
-    try {
-      httpResponse = await axios.post(params.url, params.body)
-    } catch (error) {
-      httpResponse = (error as AxiosError).response!
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      httpResponse = (error as AxiosError<Response>).response!
     }
 
     return {
