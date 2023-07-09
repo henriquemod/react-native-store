@@ -16,4 +16,4 @@ const Typography = (props: TypographyProps) => {
   return <TextComponent {...props} />
 }
 
-export default Typography
+export default React.memo(Typography)

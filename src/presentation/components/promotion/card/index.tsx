@@ -52,4 +52,4 @@ const Promotion = (props: NPromotion.Props) => {
   )
 }
 
-export default Promotion
+export default React.memo(Promotion)

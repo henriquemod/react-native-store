@@ -15,4 +15,4 @@ const Box = (props: BoxProps) => {
   return <BoxComponent {...props} />
 }
 
-export default Box
+export default React.memo(Box)

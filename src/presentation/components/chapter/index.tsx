@@ -34,4 +34,4 @@ const Chapter = (props: NChapter.Props) => {
   )
 }
 
-export default Chapter
+export default React.memo(Chapter)

@@ -58,4 +58,4 @@ const PromotionCarousel = () => {
   )
 }
 
-export default PromotionCarousel
+export default React.memo(PromotionCarousel)
