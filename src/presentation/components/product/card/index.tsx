@@ -65,14 +65,14 @@ const ProductCard = (props: NProductCard.Props) => {
             <Image
               source={props.product.image}
               style={{
-                width: sizeRaw.xxl,
-                height: sizeRaw.xxl,
+                width: sizeRaw.xxl2,
+                height: sizeRaw.xxl2,
               }}
             />
           </ProductImageContainer>
           <Bottom>
             <Typography size="xs" color="black">
-              {props.product.name}
+              {props.product.title}
             </Typography>
             <PriceContainer>
               <Typography size="xxs" strong color="black">

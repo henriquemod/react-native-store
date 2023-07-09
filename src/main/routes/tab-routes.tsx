@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import HomeScreen from 'src/presentation/screens/home'
 import { sizes } from 'src/presentation/style'
 import type { TIconProps } from 'src/presentation/components/icons/men-clothes'
 import {
@@ -10,6 +9,7 @@ import {
   OrderIcon,
   ProfileIcon,
 } from 'src/presentation/components/icons'
+import { makeHomeScreen } from '../factories/home-factory'
 
 const Tab = createBottomTabNavigator()
 
@@ -43,38 +43,42 @@ function TabNavigation() {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
         options={{
           tabBarIcon: props => <HomeIcon {...tabBarIconProps(props.focused)} />,
         }}
-      />
+      >
+        {a => makeHomeScreen(a)}
+      </Tab.Screen>
       <Tab.Screen
         name="Favorites"
-        component={HomeScreen}
         options={{
           tabBarIcon: props => (
             <FavoritesIcon {...tabBarIconProps(props.focused)} />
           ),
         }}
-      />
+      >
+        {a => makeHomeScreen(a)}
+      </Tab.Screen>
       <Tab.Screen
         name="Orders"
-        component={HomeScreen}
         options={{
           tabBarIcon: props => (
             <OrderIcon {...tabBarIconProps(props.focused)} />
           ),
         }}
-      />
+      >
+        {a => makeHomeScreen(a)}
+      </Tab.Screen>
       <Tab.Screen
         name="Profile"
-        component={HomeScreen}
         options={{
           tabBarIcon: props => (
             <ProfileIcon {...tabBarIconProps(props.focused)} />
           ),
         }}
-      />
+      >
+        {a => makeHomeScreen(a)}
+      </Tab.Screen>
     </Tab.Navigator>
   )
 }

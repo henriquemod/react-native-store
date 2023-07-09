@@ -25,7 +25,7 @@ const sizes: SizeObj = {
   l: 48,
   xl: 56,
   xxl: 64,
-  xxl2: 124,
+  xxl2: 84,
 }
 
 export const sizeRaw: SizeObj<number> = {

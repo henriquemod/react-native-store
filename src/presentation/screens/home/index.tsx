@@ -9,6 +9,8 @@ import Button from 'src/presentation/components/button'
 import Typography from 'src/presentation/components/typography'
 import CategoryCarousel from 'src/presentation/components/category/carousel'
 import ProductList from 'src/presentation/components/product/list'
+import type { AxiosHttpClient } from 'src/infra/http/axios-http-client/axios-http-client'
+import { type Business } from 'src/data/contracts/business'
 
 const Container = styled.View`
   display: flex;
@@ -16,7 +18,22 @@ const Container = styled.View`
   justify-content: center;
 `
 
-const HomeScreen = () => {
+export namespace NHomeScreen {
+  export interface Props {
+    axiosClient: AxiosHttpClient
+  }
+}
+
+const HomeScreen = (props: NHomeScreen.Props) => {
+  const [data, setData] = React.useState<Business.Product[]>([])
+
+  React.useEffect(() => {
+    props.axiosClient.get('https://fakestoreapi.com/products', {}).then(res => {
+      console.log(res.body)
+      setData(res.body)
+    })
+  }, [])
+
   return (
     <Container>
       <StatusBar style="auto" />
@@ -44,7 +61,7 @@ const HomeScreen = () => {
       >
         <CategoryCarousel />
       </Chapter>
-      <ProductList />
+      <ProductList data={data} />
     </Container>
   )
 }

@@ -8,9 +8,15 @@ export namespace Business {
     color?: Colors
   }
   export interface Product {
-    id: string
-    image: string
-    name: string
+    id: number
+    title: string
     price: number
+    description: string
+    category: string
+    image: string
+    rating: {
+      rate: number
+      count: number
+    }
   }
 }
