@@ -3,18 +3,18 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import type { Business } from 'src/data/contracts/business'
-import type { AxiosHttpClient } from 'src/infra/http/axios-http-client/axios-http-client'
-import Button from 'src/presentation/components/button'
-import CategoryCarousel from 'src/presentation/components/category/carousel'
-import Chapter from 'src/presentation/components/chapter'
-import ProductList from 'src/presentation/components/product/list'
-import PromotionCarousel from 'src/presentation/components/promotion/carousel'
-import Typography from 'src/presentation/components/typography'
-import { useProduct, useCategory } from 'src/presentation/hooks'
+import type { Business, Http } from 'src/data/contracts'
+import type { Storage } from 'src/data/contracts/storage'
+import Button from 'components/button'
+import CategoryCarousel from 'components/category/carousel'
+import CategoryCarouselSkeleton from 'components/category/carousel/skeleton'
+import Chapter from 'components/chapter'
+import ProductList from 'components/product/list'
+import ProductListSkeleton from 'components/product/list/skeleton'
+import PromotionCarousel from 'components/promotion/carousel'
+import Typography from 'components/typography'
+import { useCategory, useProduct } from 'hooks'
 import { appColors, appSizes } from 'src/presentation/style'
-import CategoryCarouselSkeleton from 'src/presentation/components/category/carousel/skeleton'
-import ProductListSkeleton from 'src/presentation/components/product/list/skeleton'
 
 const Container = styled.View`
   display: flex;
@@ -25,7 +25,8 @@ const Container = styled.View`
 
 export namespace NHomeScreen {
   export interface Props {
-    httpClient: AxiosHttpClient
+    httpClient: Http.Client
+    storage: Storage.Client
   }
 }
 

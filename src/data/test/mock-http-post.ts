@@ -1,7 +1,7 @@
-import { type HttpPostParams } from 'src/data/protocols/http'
 import { faker } from '@faker-js/faker'
+import type { Http } from '../contracts'
 
-export const mockPostRequest = (): HttpPostParams<any> => ({
+export const mockPostRequest = (): Http.PostParams => ({
   url: faker.internet.url(),
   body: {
     [faker.lorem.word()]: faker.lorem.word(),

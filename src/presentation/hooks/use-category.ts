@@ -1,8 +1,8 @@
 import { propOr } from 'ramda'
 import * as React from 'react'
 
-import type { Business } from 'src/data/contracts/business'
-import type { AxiosHttpClient } from 'src/infra/http/axios-http-client/axios-http-client'
+import type { Business } from 'src/data/contracts'
+import type { AxiosHttpClient } from 'src/infra/http/axios-http'
 
 namespace UseCategory {
   export interface Props {

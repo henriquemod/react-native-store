@@ -1,4 +1,4 @@
-import type { Business } from 'src/data/contracts/business'
+import type { Business } from 'src/data/contracts'
 import {
   ElectronicIcon,
   JewelIcon,

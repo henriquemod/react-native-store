@@ -5,7 +5,7 @@ import hexToRgba from 'src/presentation/helpers/hex-to-rgba'
 import { appColors, appSizes } from 'src/presentation/style'
 import Button from '../../button'
 import renderElementBasedOnValue from './get-icon'
-import type { Business } from 'src/data/contracts/business'
+import type { Business } from 'src/data/contracts'
 
 export namespace NCategoryCard {
   export interface Props extends TouchableOpacityProps {

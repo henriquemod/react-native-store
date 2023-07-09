@@ -1,13 +1,14 @@
-import { propOr } from 'ramda'
 import * as React from 'react'
+import { propOr } from 'ramda'
 
-import type { Business } from 'src/data/contracts/business'
-import type { AxiosHttpClient } from 'src/infra/http/axios-http-client/axios-http-client'
+import type { Business, Http, Storage } from 'src/data/contracts'
 
 namespace UseProduct {
   export interface Props {
-    httpClient: AxiosHttpClient
+    httpClient: Http.Client
+    storage: Storage.Client
   }
+
   export interface Return {
     products: Business.Product[]
     loading: boolean
@@ -15,37 +16,44 @@ namespace UseProduct {
   }
 }
 
-const useProduct = (props: UseProduct.Props): UseProduct.Return => {
+const useProduct = ({
+  httpClient,
+  storage,
+}: UseProduct.Props): UseProduct.Return => {
   const [loading, setLoading] = React.useState(true)
   const [products, setProducts] = React.useState<Business.Product[]>([])
 
-  const loadAllProducts = async () => {
-    const products = await props.httpClient.get<Business.Product[]>(
-      'https://fakestoreapi.com/products',
-    )
-    setProducts(propOr([], 'body', products))
-  }
+  const loadProducts = async (category?: Business.Category) => {
+    const key = category
+      ? `category.${encodeURIComponent(category)}`
+      : 'products'
+    const dataFromStorage = await storage.get(key)
 
-  const loadByCategory = async (category: Business.Category) => {
-    const encodeCategory = encodeURIComponent(category)
-    const products = await props.httpClient.get<Business.Product[]>(
-      `https://fakestoreapi.com/products/category/${encodeCategory}`,
-    )
-    setProducts(propOr([], 'body', products))
+    if (dataFromStorage) {
+      setProducts(JSON.parse(dataFromStorage))
+    } else {
+      let url = 'https://fakestoreapi.com/products'
+
+      if (category) {
+        url += `/category/${encodeURIComponent(category)}`
+      }
+
+      const response = await httpClient.get<Business.Product[]>(url)
+      const body = propOr([], 'body', response)
+      await storage.set(key, JSON.stringify(body))
+
+      setProducts(body as Business.Product[])
+    }
   }
 
   const refetch = async (category?: Business.Category) => {
     setLoading(true)
-    if (category) {
-      await loadByCategory(category)
-    } else {
-      await loadAllProducts()
-    }
+    await loadProducts(category)
     setLoading(false)
   }
 
   React.useEffect(() => {
-    loadAllProducts().finally(() => {
+    loadProducts().finally(() => {
       setLoading(false)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps

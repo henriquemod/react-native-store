@@ -15,7 +15,7 @@ import {
   ProductImageContainer,
   PromotionTag,
 } from './style'
-import type { Business } from 'src/data/contracts/business'
+import type { Business } from 'src/data/contracts'
 import CARD_DIMENSIONS from './dimensions'
 
 export namespace NProductCard {

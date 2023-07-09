@@ -2,7 +2,7 @@ import { Image } from 'expo-image'
 import * as React from 'react'
 import { Dimensions, View } from 'react-native'
 
-import { type Business } from 'src/data/contracts/business'
+import type { Business } from 'src/data/contracts'
 import { appFixedValues } from 'src/presentation/style'
 import Button from '../../button'
 import Box from '../../layout/box'

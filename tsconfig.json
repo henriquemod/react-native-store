@@ -5,7 +5,10 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "src/*": ["./src/*"]
+      "src/*": ["./src/*"],
+      "screens/*": ["./src/presentation/screens/*"],
+      "components/*": ["./src/presentation/components/*"],
+      "hooks": ["./src/presentation/hooks"]
     }
   }
 }

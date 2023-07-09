@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 
-import { type Business } from 'src/data/contracts/business'
+import type { Business } from 'src/data/contracts/business'
 import ProductCard from '../card'
 import { appSizes, appSpacings } from 'src/presentation/style'
 

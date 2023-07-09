@@ -2,7 +2,7 @@ import * as React from 'react'
 import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
-import { type Business } from 'src/data/contracts/business'
+import type { Business } from 'src/data/contracts/business'
 import { appSpacings } from 'src/presentation/style'
 import CategoryCard from '../card'
 
