@@ -22,12 +22,17 @@ export namespace NProductCard {
   export interface Props {
     product: Business.Product
     touchableOpacityProps?: Partial<TouchableOpacityProps>
+    onPress: () => void
   }
 }
 
 const ProductCard = (props: NProductCard.Props) => {
   return (
-    <TouchableOpacity activeOpacity={1} {...props.touchableOpacityProps}>
+    <TouchableOpacity
+      onPress={props.onPress}
+      activeOpacity={1}
+      {...props.touchableOpacityProps}
+    >
       <Box
         width={CARD_DIMENSIONS.width}
         height={CARD_DIMENSIONS.height}

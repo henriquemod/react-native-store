@@ -10,6 +10,7 @@ import {
   ProfileIcon,
 } from 'src/presentation/components/icons'
 import { makeHomeScreen } from '../factories/home-factory'
+import { type Navigation } from 'src/data/contracts'
 
 const Tab = createBottomTabNavigator()
 
@@ -47,7 +48,7 @@ function TabNavigation() {
           tabBarIcon: props => <HomeIcon {...tabBarIconProps(props.focused)} />,
         }}
       >
-        {a => makeHomeScreen(a)}
+        {a => makeHomeScreen(a as Navigation.Props)}
       </Tab.Screen>
       <Tab.Screen
         name="Favorites"
@@ -57,7 +58,7 @@ function TabNavigation() {
           ),
         }}
       >
-        {a => makeHomeScreen(a)}
+        {a => makeHomeScreen(a as Navigation.Props)}
       </Tab.Screen>
       <Tab.Screen
         name="Orders"
@@ -67,7 +68,7 @@ function TabNavigation() {
           ),
         }}
       >
-        {a => makeHomeScreen(a)}
+        {a => makeHomeScreen(a as Navigation.Props)}
       </Tab.Screen>
       <Tab.Screen
         name="Profile"
@@ -77,7 +78,7 @@ function TabNavigation() {
           ),
         }}
       >
-        {a => makeHomeScreen(a)}
+        {a => makeHomeScreen(a as Navigation.Props)}
       </Tab.Screen>
     </Tab.Navigator>
   )

@@ -3,7 +3,7 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import type { Business, Http } from 'src/data/contracts'
+import type { Business, Http, Navigation } from 'src/data/contracts'
 import type { Storage } from 'src/data/contracts/storage'
 import Button from 'components/button'
 import CategoryCarousel from 'components/category/carousel'
@@ -24,7 +24,7 @@ const Container = styled.View`
 `
 
 export namespace NHomeScreen {
-  export interface Props {
+  export interface Props extends Navigation.Props {
     httpClient: Http.Client
     storage: Storage.Client
   }
@@ -47,6 +47,10 @@ const HomeScreen = (props: NHomeScreen.Props) => {
   const handleSelectCategory = (category: Business.Category) => {
     const select = category === selectedCategory ? undefined : category
     selectCategory(select)
+  }
+
+  const handlePressProduct = (product: Business.Product) => {
+    props.navigation.navigate('Home', { product })
   }
 
   return (
@@ -82,7 +86,7 @@ const HomeScreen = (props: NHomeScreen.Props) => {
         {productLoading ? (
           <ProductListSkeleton />
         ) : (
-          <ProductList data={products} />
+          <ProductList onPress={handlePressProduct} data={products} />
         )}
       </Container>
     </SafeAreaView>
