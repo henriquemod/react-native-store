@@ -8,7 +8,8 @@ export const BoxComponent = styled.View<BoxProps>`
     props.color ? colors[props.color] : colors.white};
   position: relative;
   border-radius: ${fixedValues.borderRadius}px;
-  padding: ${spacings.m}px;
+  padding: ${props =>
+    props.padding ? `${props.padding}px` : `${spacings.m}px`};
   ${props =>
     props.width &&
     `width: ${

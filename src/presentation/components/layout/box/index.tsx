@@ -6,6 +6,7 @@ import type { Colors } from 'src/presentation/style/colors'
 
 export interface BoxProps extends ViewProps {
   color?: Colors
+  padding?: React.CSSProperties['padding']
   width?: React.CSSProperties['width']
   height?: React.CSSProperties['height']
 }

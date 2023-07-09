@@ -13,7 +13,9 @@ const convertFontSize = (size: number) => {
 }
 
 const sizes: FontValues = {
+  xxxs: 8,
   xxs: 10,
+  xxs2: 11,
   xs: 12,
   s: 14,
   m: 16,
@@ -23,7 +25,9 @@ const sizes: FontValues = {
 }
 
 const font: FontSize = {
+  xxxs: convertFontSize(sizes.xxxs),
   xxs: convertFontSize(sizes.xxs),
+  xxs2: convertFontSize(sizes.xxs2),
   xs: convertFontSize(sizes.xs),
   s: convertFontSize(sizes.s),
   m: convertFontSize(sizes.m),

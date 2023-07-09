@@ -1,9 +1,9 @@
 import { Dimensions } from 'react-native'
 
 import fixedValues from './fixed-values'
+import { type Size } from '.'
 
-type Space = 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl'
-type Spacing = { [key in Space]: number }
+type Spacing = { [key in Size]: number }
 
 const convertFontSize = (size: number) => {
   return Math.round(
@@ -12,7 +12,9 @@ const convertFontSize = (size: number) => {
 }
 
 const sizes: Spacing = {
+  xxxs: 1,
   xxs: 2,
+  xxs2: 3,
   xs: 4,
   s: 8,
   m: 12,
@@ -22,7 +24,9 @@ const sizes: Spacing = {
 }
 
 const spacing: Spacing = {
+  xxxs: convertFontSize(sizes.xxxs),
   xxs: convertFontSize(sizes.xxs),
+  xxs2: convertFontSize(sizes.xxs2),
   xs: convertFontSize(sizes.xs),
   s: convertFontSize(sizes.s),
   m: convertFontSize(sizes.m),

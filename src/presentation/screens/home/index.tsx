@@ -8,6 +8,7 @@ import Chapter from 'src/presentation/components/chapter'
 import Button from 'src/presentation/components/button'
 import Typography from 'src/presentation/components/typography'
 import CategoryCarousel from 'src/presentation/components/category/carousel'
+import ProductList from 'src/presentation/components/product/list'
 
 const Container = styled.View`
   display: flex;
@@ -23,7 +24,7 @@ const HomeScreen = () => {
         title="Hello Fola"
         subtitle="Lets start shopping!"
         style={{
-          marginTop: 50,
+          marginTop: 20,
         }}
       >
         <PromotionCarousel />
@@ -38,11 +39,12 @@ const HomeScreen = () => {
           </Button>
         }
         style={{
-          marginTop: 50,
+          marginTop: 10,
         }}
       >
         <CategoryCarousel />
       </Chapter>
+      <ProductList />
     </Container>
   )
 }

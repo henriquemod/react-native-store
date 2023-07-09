@@ -9,6 +9,7 @@ export namespace NButton {
     color?: Colors
     width?: string
     height?: string
+    padding?: React.CSSProperties['padding']
     rounded?: boolean
   }
 }
