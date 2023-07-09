@@ -3,7 +3,8 @@ import { FlatList } from 'react-native-gesture-handler'
 
 import { type Business } from 'src/data/contracts/business'
 import ProductCard from '../card'
-import { spacings } from 'src/presentation/style'
+import { sizeRaw, spacings } from 'src/presentation/style'
+import { Dimensions } from 'react-native'
 
 const data: Business.Product[] = [
   {
@@ -49,14 +50,15 @@ const ProductList = () => {
     <FlatList
       data={data}
       scrollEnabled
+      overScrollMode="always"
       showsVerticalScrollIndicator={false}
       style={{
-        marginTop: 20,
-        marginBottom: 120,
+        marginTop: sizeRaw.xs,
       }}
       contentContainerStyle={{
         alignItems: 'center',
         gap: spacings.m,
+        height: Dimensions.get('window').height - sizeRaw.xxl,
       }}
       numColumns={2}
       renderItem={({ item }) => {

@@ -21,6 +21,7 @@ const sizes: Spacing = {
   l: 16,
   xl: 20,
   xxl: 24,
+  xxl2: 32,
 }
 
 const spacing: Spacing = {
@@ -33,6 +34,7 @@ const spacing: Spacing = {
   l: convertFontSize(sizes.l),
   xl: convertFontSize(sizes.xl),
   xxl: convertFontSize(sizes.xxl),
+  xxl2: convertFontSize(sizes.xxl2),
 }
 
 export default spacing

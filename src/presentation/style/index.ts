@@ -13,4 +13,5 @@ export type Size =
   | 'l'
   | 'xl'
   | 'xxl'
+  | 'xxl2'
 export * from './sizes'

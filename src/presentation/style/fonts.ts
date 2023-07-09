@@ -22,6 +22,7 @@ const sizes: FontValues = {
   l: 18,
   xl: 20,
   xxl: 24,
+  xxl2: 32,
 }
 
 const font: FontSize = {
@@ -34,6 +35,7 @@ const font: FontSize = {
   l: convertFontSize(sizes.l),
   xl: convertFontSize(sizes.xl),
   xxl: convertFontSize(sizes.xxl),
+  xxl2: convertFontSize(sizes.xxl2),
 }
 
 export default font

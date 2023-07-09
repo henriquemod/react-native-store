@@ -25,6 +25,7 @@ const sizes: SizeObj = {
   l: 48,
   xl: 56,
   xxl: 64,
+  xxl2: 124,
 }
 
 export const sizeRaw: SizeObj<number> = {
@@ -37,6 +38,7 @@ export const sizeRaw: SizeObj<number> = {
   l: convertSizeToPx(sizes.l, true).raw,
   xl: convertSizeToPx(sizes.xl, true).raw,
   xxl: convertSizeToPx(sizes.xxl, true).raw,
+  xxl2: convertSizeToPx(sizes.xxl2, true).raw,
 }
 
 const size: SizeObj<string> = {
@@ -49,6 +51,7 @@ const size: SizeObj<string> = {
   l: convertSizeToPx(sizes.l).string,
   xl: convertSizeToPx(sizes.xl).string,
   xxl: convertSizeToPx(sizes.xxl).string,
+  xxl2: convertSizeToPx(sizes.xxl2).string,
 }
 
 export default size

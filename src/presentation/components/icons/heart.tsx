@@ -10,7 +10,7 @@ export interface TIconProps {
   width?: string
 }
 
-const Jewel = (props: TIconProps) => {
+const Heart = (props: TIconProps) => {
   const { color = 'black', height = sizes.s, width = sizes.s } = props
   return (
     <Svg width={width} height={height} viewBox="0 0 12 10" fill="none">
@@ -22,4 +22,4 @@ const Jewel = (props: TIconProps) => {
   )
 }
 
-export default Jewel
+export default Heart
