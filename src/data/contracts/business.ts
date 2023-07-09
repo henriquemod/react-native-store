@@ -19,4 +19,9 @@ export namespace Business {
       count: number
     }
   }
+  export type Category =
+    | 'electronics'
+    | 'jewelery'
+    | "men's clothing"
+    | "women's clothing"
 }

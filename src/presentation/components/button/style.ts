@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-import { colors, fixedValues, spacings } from 'src/presentation/style'
+import { appColors, appFixedValues, appSpacings } from 'src/presentation/style'
 import type { NButton } from '.'
 
 export const ButtonComponent = styled.TouchableOpacity<NButton.Props>`
@@ -8,11 +8,13 @@ export const ButtonComponent = styled.TouchableOpacity<NButton.Props>`
   justify-content: center;
   align-items: center;
   border-radius: ${props =>
-    props.rounded ? fixedValues.borderRounded : fixedValues.borderRadius}px;
+    props.rounded
+      ? appFixedValues.borderRounded
+      : appFixedValues.borderRadius}px;
   padding: ${props =>
-    props.padding ? props.padding : `${spacings.xs}px ${spacings.m}px`};
+    props.padding ? props.padding : `${appSpacings.xs}px ${appSpacings.m}px`};
   background-color: ${props =>
-    props.color ? colors[props.color] : colors.white};
+    props.color ? appColors[props.color] : appColors.white};
   ${props => props.width && `width: ${props.width};`}
   ${props => props.height && `height: ${props.height};`}
 `

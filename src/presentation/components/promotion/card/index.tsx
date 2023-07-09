@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Dimensions, View } from 'react-native'
 
 import { type Business } from 'src/data/contracts/business'
-import { fixedValues } from 'src/presentation/style'
+import { appFixedValues } from 'src/presentation/style'
 import Button from '../../button'
 import Box from '../../layout/box'
 import Typography from '../../typography'
@@ -40,7 +40,7 @@ const Promotion = (props: NPromotion.Props) => {
         style={{
           position: 'absolute',
           zIndex: -1,
-          borderBottomRightRadius: fixedValues.borderRadius,
+          borderBottomRightRadius: appFixedValues.borderRadius,
           bottom: 1,
           right: 0,
           flex: 1,

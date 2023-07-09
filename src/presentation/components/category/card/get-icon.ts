@@ -1,3 +1,4 @@
+import type { Business } from 'src/data/contracts/business'
 import {
   ElectronicIcon,
   JewelIcon,
@@ -5,13 +6,7 @@ import {
   WomenClothesIcon,
 } from '../../icons'
 
-export type IconItem =
-  | 'electronics'
-  | 'jewelery'
-  | "men's clothing"
-  | "women's clothing"
-
-const renderElementBasedOnValue = (value: IconItem) => {
+const renderElementBasedOnValue = (value: Business.Category) => {
   switch (value) {
     case 'electronics':
       return ElectronicIcon

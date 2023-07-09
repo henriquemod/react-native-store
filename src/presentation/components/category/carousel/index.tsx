@@ -2,30 +2,24 @@ import * as React from 'react'
 import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
-import { spacings } from 'src/presentation/style'
-import CategoryCard, { type NCategoryCard } from '../card'
+import { type Business } from 'src/data/contracts/business'
+import { appSpacings } from 'src/presentation/style'
+import CategoryCard from '../card'
 
-const data: NCategoryCard.Props[] = [
-  {
-    id: '1',
-    active: true,
-    icon: "men's clothing",
-  },
-  {
-    id: '2',
-    icon: "women's clothing",
-  },
-  {
-    id: '3',
-    icon: 'electronics',
-  },
-  {
-    id: '4',
-    icon: 'jewelery',
-  },
-]
+export namespace NCategoryCarousel {
+  export interface Props {
+    selectedCategory?: Business.Category
+    categories: Business.Category[]
+    handleSelectCategory: (category: Business.Category) => void
+  }
+}
 
-const CategoryCarousel = () => {
+const CategoryCarousel = (props: NCategoryCarousel.Props) => {
+  const data = props.categories.map((category, i) => ({
+    id: i.toString(),
+    icon: category,
+    active: props.selectedCategory === category,
+  }))
   return (
     <FlatList
       horizontal
@@ -33,17 +27,22 @@ const CategoryCarousel = () => {
       data={data}
       style={{ width: '100%' }}
       keyExtractor={item => item.id}
-      renderItem={({ item }) => (
-        <View
-          style={{
-            marginHorizontal: spacings.s,
-          }}
-        >
-          <CategoryCard {...item} />
-        </View>
-      )}
+      renderItem={({ item }) => {
+        const handleSelectCategory = () => {
+          props.handleSelectCategory(item.icon)
+        }
+        return (
+          <View
+            style={{
+              marginHorizontal: appSpacings.s,
+            }}
+          >
+            <CategoryCard onPress={handleSelectCategory} {...item} />
+          </View>
+        )
+      }}
     />
   )
 }
 
-export default CategoryCarousel
+export default React.memo(CategoryCarousel)

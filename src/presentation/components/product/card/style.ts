@@ -1,6 +1,11 @@
 import styled from 'styled-components/native'
 
-import { colors, fixedValues, sizes, spacings } from 'src/presentation/style'
+import {
+  appSizes,
+  appColors,
+  appFixedValues,
+  appSpacings,
+} from 'src/presentation/style'
 
 export const Header = styled.View`
   display: flex;
@@ -14,10 +19,10 @@ export const PromotionTag = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: ${colors.white};
-  padding: 0 ${spacings.s}px;
-  border-radius: ${fixedValues.borderRounded}px;
-  height: ${sizes.xxs2};
+  background-color: ${appColors.white};
+  padding: 0 ${appSpacings.s}px;
+  border-radius: ${appFixedValues.borderRounded}px;
+  height: ${appSizes.size.xxs2};
 `
 
 export const Bottom = styled.View`
@@ -48,6 +53,6 @@ export const PriceContainer = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: flex-start;
-  gap: ${spacings.m}px;
+  gap: ${appSpacings.m}px;
   align-items: center;
 `

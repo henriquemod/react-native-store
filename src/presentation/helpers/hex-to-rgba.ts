@@ -1,9 +1,9 @@
-import { colors } from '../style'
+import { appColors } from '../style'
 
 const hexToRgba = (color: string, opacity: number): string => {
   const isValidHex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(color)
   if (!isValidHex) {
-    return colors.black
+    return appColors.black
   }
   const hexWithoutHash = color.replace('#', '')
   const red = parseInt(hexWithoutHash.substring(0, 2), 16)

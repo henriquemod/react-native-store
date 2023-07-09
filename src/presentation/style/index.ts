@@ -1,8 +1,8 @@
-export { default as fontSize } from './fonts'
-export { default as spacings } from './spacings'
-export { default as fixedValues } from './fixed-values'
-export { default as colors } from './colors'
-export { default as sizes } from './sizes'
+export { default as appFontSize } from './fonts'
+export { default as appSpacings } from './spacings'
+export { default as appFixedValues } from './fixed-values'
+export { default as appColors } from './colors'
+export { default as appSizes } from './sizes'
 export type Size =
   | 'xxxs'
   | 'xxs'

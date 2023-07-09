@@ -1,16 +1,17 @@
 import * as React from 'react'
-import { type ViewProps } from 'react-native'
+import type { TouchableOpacityProps } from 'react-native'
 
 import hexToRgba from 'src/presentation/helpers/hex-to-rgba'
-import { colors, sizes } from 'src/presentation/style'
+import { appColors, appSizes } from 'src/presentation/style'
 import Button from '../../button'
-import renderElementBasedOnValue, { type IconItem } from './get-icon'
+import renderElementBasedOnValue from './get-icon'
+import type { Business } from 'src/data/contracts/business'
 
 export namespace NCategoryCard {
-  export interface Props extends ViewProps {
+  export interface Props extends TouchableOpacityProps {
     id: string
     active?: boolean
-    icon: IconItem
+    icon: Business.Category
   }
 }
 
@@ -18,18 +19,21 @@ const CategoryCard = (props: NCategoryCard.Props) => {
   const Component = renderElementBasedOnValue(props.icon)
   return (
     <Button
-      width={sizes.xxl}
-      height={sizes.xxl}
+      width={appSizes.size.xxl}
+      height={appSizes.size.xxl}
       color={props.active ? 'orange' : 'lightGray'}
       style={{
         borderWidth: 1,
-        borderColor: hexToRgba(props.active ? colors.orange : colors.gray, 0.5),
+        borderColor: hexToRgba(
+          props.active ? appColors.orange : appColors.gray,
+          0.5,
+        ),
       }}
       {...props}
     >
       {Component && (
         <Component
-          width={sizes.xs}
+          width={appSizes.size.xs}
           color={props.active ? 'white' : 'darkGray'}
         />
       )}
@@ -37,4 +41,4 @@ const CategoryCard = (props: NCategoryCard.Props) => {
   )
 }
 
-export default CategoryCard
+export default React.memo(CategoryCard)

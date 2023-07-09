@@ -1,41 +1,25 @@
 import { Dimensions } from 'react-native'
-
 import fixedValues from './fixed-values'
 import type { Size } from '.'
 
-type FontValues = { [key in Size]: number }
 type FontSize = { [key in Size]: string }
 
-const convertFontSize = (size: number) => {
-  return `${Math.round(
-    (size * Dimensions.get('window').width) / fixedValues.widthDivider,
-  )}px`
-}
-
-const sizes: FontValues = {
-  xxxs: 8,
-  xxs: 10,
-  xxs2: 11,
-  xs: 12,
-  s: 14,
-  m: 16,
-  l: 18,
-  xl: 20,
-  xxl: 24,
-  xxl2: 32,
+const convertFontSize = (size: number): string => {
+  const { width } = Dimensions.get('window')
+  return `${Math.round((size * width) / fixedValues.widthDivider)}px`
 }
 
 const font: FontSize = {
-  xxxs: convertFontSize(sizes.xxxs),
-  xxs: convertFontSize(sizes.xxs),
-  xxs2: convertFontSize(sizes.xxs2),
-  xs: convertFontSize(sizes.xs),
-  s: convertFontSize(sizes.s),
-  m: convertFontSize(sizes.m),
-  l: convertFontSize(sizes.l),
-  xl: convertFontSize(sizes.xl),
-  xxl: convertFontSize(sizes.xxl),
-  xxl2: convertFontSize(sizes.xxl2),
+  xxxs: convertFontSize(8),
+  xxs: convertFontSize(10),
+  xxs2: convertFontSize(11),
+  xs: convertFontSize(12),
+  s: convertFontSize(14),
+  m: convertFontSize(16),
+  l: convertFontSize(18),
+  xl: convertFontSize(20),
+  xxl: convertFontSize(24),
+  xxl2: convertFontSize(32),
 }
 
 export default font

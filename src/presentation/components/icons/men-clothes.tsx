@@ -1,6 +1,6 @@
 import React from 'react'
 import Svg, { Path } from 'react-native-svg'
-import { colors, sizes } from 'src/presentation/style'
+import { appColors, appSizes } from 'src/presentation/style'
 import type { Colors } from 'src/presentation/style/colors'
 
 export interface TIconProps {
@@ -10,10 +10,14 @@ export interface TIconProps {
 }
 
 const MenClothes = (props: TIconProps) => {
-  const { color = 'black', height = sizes.s, width = sizes.s } = props
+  const {
+    color = 'black',
+    height = appSizes.size.s,
+    width = appSizes.size.s,
+  } = props
   return (
     <Svg
-      fill={colors[color]}
+      fill={appColors[color]}
       width={width}
       height={height}
       viewBox="0 0 24 24"

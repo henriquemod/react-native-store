@@ -1,5 +1,5 @@
-import { HttpPostParams } from "src/data/protocols/http";
-import { faker } from "@faker-js/faker";
+import { type HttpPostParams } from 'src/data/protocols/http'
+import { faker } from '@faker-js/faker'
 
 export const mockPostRequest = (): HttpPostParams<any> => ({
   url: faker.internet.url(),
@@ -8,4 +8,4 @@ export const mockPostRequest = (): HttpPostParams<any> => ({
     [faker.lorem.word()]: faker.lorem.word(),
     [faker.lorem.word()]: faker.lorem.word(),
   },
-});
+})

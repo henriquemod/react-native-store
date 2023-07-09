@@ -1,12 +1,8 @@
 import { Image } from 'expo-image'
 import * as React from 'react'
-import {
-  Dimensions,
-  TouchableOpacity,
-  type TouchableOpacityProps,
-} from 'react-native'
+import { TouchableOpacity, type TouchableOpacityProps } from 'react-native'
 
-import { colors, sizeRaw, sizes, spacings } from 'src/presentation/style'
+import { appColors, appSizes, appSpacings } from 'src/presentation/style'
 import Button from '../../button'
 import { HeartIcon } from '../../icons'
 import Box from '../../layout/box'
@@ -20,9 +16,7 @@ import {
   PromotionTag,
 } from './style'
 import type { Business } from 'src/data/contracts/business'
-
-const height = Dimensions.get('window').height
-const width = Dimensions.get('window').width
+import CARD_DIMENSIONS from './dimensions'
 
 export namespace NProductCard {
   export interface Props {
@@ -35,10 +29,10 @@ const ProductCard = (props: NProductCard.Props) => {
   return (
     <TouchableOpacity activeOpacity={1} {...props.touchableOpacityProps}>
       <Box
-        width={width - width * 0.55}
-        height={height - height * 0.78}
+        width={CARD_DIMENSIONS.width}
+        height={CARD_DIMENSIONS.height}
         color="lightGray"
-        padding={spacings.s}
+        padding={appSpacings.s}
       >
         <Container>
           <Header>
@@ -48,25 +42,29 @@ const ProductCard = (props: NProductCard.Props) => {
               </Typography>
             </PromotionTag>
             <Button
-              width={sizes.xxs2}
-              height={sizes.xxs2}
+              width={appSizes.size.xxs2}
+              height={appSizes.size.xxs2}
               rounded
               color="lightGray"
-              padding={sizes.xxxs}
+              padding={appSizes.size.xxxs}
               style={{
                 borderWidth: 2,
-                borderColor: colors.gray,
+                borderColor: appColors.gray,
               }}
             >
-              <HeartIcon color="gray" width={sizes.xxs} height={sizes.xxs} />
+              <HeartIcon
+                color="gray"
+                width={appSizes.size.xxs}
+                height={appSizes.size.xxs}
+              />
             </Button>
           </Header>
           <ProductImageContainer>
             <Image
               source={props.product.image}
               style={{
-                width: sizeRaw.xxl2,
-                height: sizeRaw.xxl2,
+                width: appSizes.sizeRaw.xxl2,
+                height: appSizes.sizeRaw.xxl2,
               }}
             />
           </ProductImageContainer>
@@ -96,4 +94,4 @@ const ProductCard = (props: NProductCard.Props) => {
   )
 }
 
-export default ProductCard
+export default React.memo(ProductCard)

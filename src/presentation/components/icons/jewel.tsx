@@ -1,6 +1,6 @@
 import React from 'react'
 import Svg, { Path, G, Polygon } from 'react-native-svg'
-import { colors, sizes } from 'src/presentation/style'
+import { appColors, appSizes } from 'src/presentation/style'
 import type { Colors } from 'src/presentation/style/colors'
 
 export interface TIconProps {
@@ -10,7 +10,11 @@ export interface TIconProps {
 }
 
 const Jewel = (props: TIconProps) => {
-  const { color = 'black', height = sizes.s, width = sizes.s } = props
+  const {
+    color = 'black',
+    height = appSizes.size.s,
+    width = appSizes.size.s,
+  } = props
   return (
     <Svg width={width} height={height} viewBox="0 0 64 64">
       <G
@@ -20,7 +24,7 @@ const Jewel = (props: TIconProps) => {
         fill="none"
         fillRule="evenodd"
       >
-        <G id="gen-jewel" fill={colors[color]}>
+        <G id="gen-jewel" fill={appColors[color]}>
           <Path
             d="M31.0596,57.3398 L18.2976,21.9998 L4.4996,21.9998 L31.2006,57.5998 C31.2016,57.6018 31.2026,57.6018 31.2026,57.6028 C31.1436,57.5238 31.0946,57.4358 31.0596,57.3398"
             id="Fill-125"

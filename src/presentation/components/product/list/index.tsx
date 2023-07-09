@@ -3,8 +3,7 @@ import { FlatList } from 'react-native-gesture-handler'
 
 import { type Business } from 'src/data/contracts/business'
 import ProductCard from '../card'
-import { sizeRaw, spacings } from 'src/presentation/style'
-import { Dimensions } from 'react-native'
+import { appSizes, appSpacings } from 'src/presentation/style'
 
 export namespace NProductList {
   export interface Props {
@@ -13,20 +12,18 @@ export namespace NProductList {
 }
 
 const ProductList = (props: NProductList.Props) => {
-  console.log(props.data.length)
   return (
     <FlatList
-      initialNumToRender={props.data.length}
       data={props.data}
       scrollEnabled
       overScrollMode="always"
       showsVerticalScrollIndicator={false}
       style={{
-        marginTop: sizeRaw.xs,
+        marginTop: appSizes.sizeRaw.xs,
       }}
       contentContainerStyle={{
         alignItems: 'center',
-        gap: spacings.m,
+        gap: appSpacings.m,
       }}
       numColumns={2}
       renderItem={({ item }) => {
@@ -35,7 +32,7 @@ const ProductList = (props: NProductList.Props) => {
             product={item}
             touchableOpacityProps={{
               style: {
-                marginHorizontal: spacings.s,
+                marginHorizontal: appSpacings.s,
               },
             }}
           />
@@ -46,4 +43,4 @@ const ProductList = (props: NProductList.Props) => {
   )
 }
 
-export default ProductList
+export default React.memo(ProductList)

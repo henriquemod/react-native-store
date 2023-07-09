@@ -1,15 +1,15 @@
 import styled from 'styled-components/native'
 
-import { colors, fixedValues, spacings } from 'src/presentation/style'
+import { appColors, appFixedValues, appSpacings } from 'src/presentation/style'
 import type { BoxProps } from '.'
 
 export const BoxComponent = styled.View<BoxProps>`
   background-color: ${props =>
-    props.color ? colors[props.color] : colors.white};
+    props.color ? appColors[props.color] : appColors.white};
   position: relative;
-  border-radius: ${fixedValues.borderRadius}px;
+  border-radius: ${appFixedValues.borderRadius}px;
   padding: ${props =>
-    props.padding ? `${props.padding}px` : `${spacings.m}px`};
+    props.padding ? `${props.padding}px` : `${appSpacings.m}px`};
   ${props =>
     props.width &&
     `width: ${

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { sizes } from 'src/presentation/style'
+import { appSizes } from 'src/presentation/style'
 import type { TIconProps } from 'src/presentation/components/icons/men-clothes'
 import {
   FavoritesIcon,
@@ -15,8 +15,8 @@ const Tab = createBottomTabNavigator()
 
 function TabNavigation() {
   const tabBarIconProps = (focused: boolean): TIconProps => ({
-    height: sizes.xs,
-    width: sizes.xs,
+    height: appSizes.size.xs,
+    width: appSizes.size.xs,
     color: focused ? 'orange' : 'darkGray',
   })
   return (

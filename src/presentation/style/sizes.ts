@@ -1,21 +1,21 @@
+/* eslint-disable @typescript-eslint/consistent-type-assertions */
 import { Dimensions } from 'react-native'
-
 import fixedValues from './fixed-values'
 import type { Size } from '.'
 
-type SizeObj<T = number> = { [key in Size]: T }
+type SizeObj<T = number> = { [key in Size]: T } & Record<string, T>
 
-const convertSizeToPx = (size: number, raw?: boolean) => {
-  const rawValue = Math.round(
-    (size * Dimensions.get('window').width) / fixedValues.widthDivider,
-  )
+const windowWidth = Dimensions.get('window').width
+
+const convertSizeToPx = (size: number) => {
+  const rawValue = Math.round((size * windowWidth) / fixedValues.widthDivider)
   return {
     raw: rawValue,
     string: `${rawValue}px`,
   }
 }
 
-const sizes: SizeObj = {
+const sizes: SizeObj<number> = {
   xxxs: 8,
   xxs: 12,
   xxs2: 18,
@@ -28,30 +28,17 @@ const sizes: SizeObj = {
   xxl2: 84,
 }
 
-export const sizeRaw: SizeObj<number> = {
-  xxxs: convertSizeToPx(sizes.xxxs, true).raw,
-  xxs: convertSizeToPx(sizes.xxs, true).raw,
-  xxs2: convertSizeToPx(sizes.xxs2, true).raw,
-  xs: convertSizeToPx(sizes.xs, true).raw,
-  s: convertSizeToPx(sizes.s, true).raw,
-  m: convertSizeToPx(sizes.m, true).raw,
-  l: convertSizeToPx(sizes.l, true).raw,
-  xl: convertSizeToPx(sizes.xl, true).raw,
-  xxl: convertSizeToPx(sizes.xxl, true).raw,
-  xxl2: convertSizeToPx(sizes.xxl2, true).raw,
+const sizeRaw: SizeObj<number> = {} as SizeObj<number>
+const size: SizeObj<string> = {} as SizeObj<string>
+
+for (const key in sizes) {
+  const sizeValue = sizes[key]
+  const { raw, string } = convertSizeToPx(sizeValue)
+
+  sizeRaw[key] = raw
+  size[key] = string
 }
 
-const size: SizeObj<string> = {
-  xxxs: convertSizeToPx(sizes.xxxs).string,
-  xxs: convertSizeToPx(sizes.xxs).string,
-  xxs2: convertSizeToPx(sizes.xxs2).string,
-  xs: convertSizeToPx(sizes.xs).string,
-  s: convertSizeToPx(sizes.s).string,
-  m: convertSizeToPx(sizes.m).string,
-  l: convertSizeToPx(sizes.l).string,
-  xl: convertSizeToPx(sizes.xl).string,
-  xxl: convertSizeToPx(sizes.xxl).string,
-  xxl2: convertSizeToPx(sizes.xxl2).string,
-}
+const appSizes = { sizeRaw, size }
 
-export default size
+export default appSizes

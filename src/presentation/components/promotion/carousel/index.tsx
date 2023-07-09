@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 import type { Business } from 'src/data/contracts/business'
-import { spacings } from 'src/presentation/style'
+import { appSpacings } from 'src/presentation/style'
 import Promotion from '../card'
 
 const data: Business.Promotion[] = [
@@ -48,7 +48,7 @@ const PromotionCarousel = () => {
       renderItem={({ item }) => (
         <View
           style={{
-            marginHorizontal: spacings.s,
+            marginHorizontal: appSpacings.s,
           }}
         >
           <Promotion {...item} />
