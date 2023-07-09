@@ -10,5 +10,5 @@ export interface HttpPostClient<T, R> {
 }
 
 export interface HttpGetClient<T, R> {
-  get: (url: string, params: T) => Promise<HttpResponse<R>>
+  get: (url: string, params?: T) => Promise<HttpResponse<R>>
 }

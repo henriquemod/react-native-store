@@ -4,5 +4,5 @@ import { makeAxiosHttpClient } from './axios-factory'
 
 export const makeHomeScreen: React.FC = (): JSX.Element => {
   const axiosClient = makeAxiosHttpClient()
-  return <HomeScreen axiosClient={axiosClient} />
+  return <HomeScreen httpClient={axiosClient} />
 }

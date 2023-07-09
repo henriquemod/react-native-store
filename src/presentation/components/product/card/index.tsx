@@ -71,7 +71,7 @@ const ProductCard = (props: NProductCard.Props) => {
             />
           </ProductImageContainer>
           <Bottom>
-            <Typography size="xs" color="black">
+            <Typography size="xs" color="black" numberOfLines={1}>
               {props.product.title}
             </Typography>
             <PriceContainer>

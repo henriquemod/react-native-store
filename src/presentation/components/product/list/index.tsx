@@ -6,45 +6,6 @@ import ProductCard from '../card'
 import { sizeRaw, spacings } from 'src/presentation/style'
 import { Dimensions } from 'react-native'
 
-// const data: Business.Product[] = [
-//   {
-//     id: '1',
-//     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-//     name: 'iPhone 14',
-//     price: 3500,
-//   },
-//   {
-//     id: '2',
-//     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-//     name: 'iPhone 14',
-//     price: 3500,
-//   },
-//   {
-//     id: '3',
-//     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-//     name: 'iPhone 14',
-//     price: 3500,
-//   },
-//   {
-//     id: '4',
-//     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-//     name: 'iPhone 14',
-//     price: 3500,
-//   },
-//   {
-//     id: '5',
-//     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-//     name: 'iPhone 14',
-//     price: 3500,
-//   },
-//   {
-//     id: '6',
-//     image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-//     name: 'iPhone 14',
-//     price: 3500,
-//   },
-// ]
-
 export namespace NProductList {
   export interface Props {
     data: Business.Product[]
@@ -52,8 +13,10 @@ export namespace NProductList {
 }
 
 const ProductList = (props: NProductList.Props) => {
+  console.log(props.data.length)
   return (
     <FlatList
+      initialNumToRender={props.data.length}
       data={props.data}
       scrollEnabled
       overScrollMode="always"
@@ -64,7 +27,6 @@ const ProductList = (props: NProductList.Props) => {
       contentContainerStyle={{
         alignItems: 'center',
         gap: spacings.m,
-        height: Dimensions.get('window').height - sizeRaw.xxl,
       }}
       numColumns={2}
       renderItem={({ item }) => {

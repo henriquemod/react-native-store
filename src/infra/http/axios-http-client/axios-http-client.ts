@@ -9,7 +9,7 @@ import axios, { type AxiosError, type AxiosResponse } from 'axios'
 export class AxiosHttpClient
   implements HttpPostClient<any, any>, HttpGetClient<any, any>
 {
-  async get(url: string, params: any): Promise<HttpResponse<any>> {
+  async get(url: string, params?: any): Promise<HttpResponse<any>> {
     let httpResponse: AxiosResponse<any>
 
     try {

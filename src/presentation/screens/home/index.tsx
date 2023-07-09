@@ -11,16 +11,18 @@ import CategoryCarousel from 'src/presentation/components/category/carousel'
 import ProductList from 'src/presentation/components/product/list'
 import type { AxiosHttpClient } from 'src/infra/http/axios-http-client/axios-http-client'
 import { type Business } from 'src/data/contracts/business'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Container = styled.View`
   display: flex;
   background-color: ${colors.white};
   justify-content: center;
+  height: 100%;
 `
 
 export namespace NHomeScreen {
   export interface Props {
-    axiosClient: AxiosHttpClient
+    httpClient: AxiosHttpClient
   }
 }
 
@@ -28,41 +30,36 @@ const HomeScreen = (props: NHomeScreen.Props) => {
   const [data, setData] = React.useState<Business.Product[]>([])
 
   React.useEffect(() => {
-    props.axiosClient.get('https://fakestoreapi.com/products', {}).then(res => {
-      console.log(res.body)
+    props.httpClient.get('https://fakestoreapi.com/products').then(res => {
       setData(res.body)
     })
   }, [])
 
   return (
-    <Container>
-      <StatusBar style="auto" />
-      <Chapter
-        title="Hello Fola"
-        subtitle="Lets start shopping!"
-        style={{
-          marginTop: 20,
-        }}
-      >
-        <PromotionCarousel />
-      </Chapter>
-      <Chapter
-        title="Top Categories"
-        endornment={
-          <Button>
-            <Typography color="orange" size="xs" dark>
-              See All
-            </Typography>
-          </Button>
-        }
-        style={{
-          marginTop: 10,
-        }}
-      >
-        <CategoryCarousel />
-      </Chapter>
-      <ProductList data={data} />
-    </Container>
+    <SafeAreaView>
+      <Container>
+        <StatusBar style="auto" />
+        <Chapter title="Hello Fola" subtitle="Lets start shopping!">
+          <PromotionCarousel />
+        </Chapter>
+        <Chapter
+          title="Top Categories"
+          endornment={
+            <Button>
+              <Typography color="orange" size="xs" dark>
+                See All
+              </Typography>
+            </Button>
+          }
+          style={{
+            marginTop: 10,
+          }}
+        >
+          <CategoryCarousel />
+        </Chapter>
+        <ProductList data={data} />
+      </Container>
+    </SafeAreaView>
   )
 }
 
