@@ -1,7 +1,7 @@
 {
   "name": "store",
   "version": "1.0.0",
-  "main": "src/main/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -9,7 +9,10 @@
     "web": "expo start --web",
     "test": "jest",
     "type-check": "tsc --noEmit",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx",
+    "build-prod": "eas build -p android -e production",
+    "build:develop": "eas build --platform android --local -e preview",
+    "android-build": "eas build --platform android --local -e production"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.8",
@@ -32,7 +35,9 @@
     "styled-components": "^6.0.3",
     "typescript": "^4.9.4",
     "uuid": "^9.0.0",
-    "@react-native-async-storage/async-storage": "1.17.11"
+    "@react-native-async-storage/async-storage": "1.17.11",
+    "expo-updates": "~0.16.4",
+    "expo-dev-client": "~2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

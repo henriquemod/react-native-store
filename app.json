@@ -19,10 +19,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./public/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.henriquemod.store"
     },
     "web": {
       "favicon": "./public/assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "71196fe9-728b-4105-a752-f0def2039cb7"
+      }
     }
   }
 }
