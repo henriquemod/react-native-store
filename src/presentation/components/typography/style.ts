@@ -6,5 +6,10 @@ import { appColors, appFontSize } from 'src/presentation/style'
 export const TextComponent = styled.Text<TypographyProps>`
   font-size: ${({ size }) => appFontSize[size ?? 'm']};
   font-weight: ${({ strong }) => (strong ? 'bold' : 'normal')};
-  color: ${props => (props.color ? appColors[props.color] : appColors.white)};
+  color: ${props => {
+    const color = props.color
+    if (!color) return appColors.white
+    const isRGBA = color.includes('rgba')
+    return isRGBA ? color : appColors[color]
+  }};
 `

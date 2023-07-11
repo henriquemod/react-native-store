@@ -2,8 +2,8 @@ import * as React from 'react'
 import type { TextProps } from 'react-native'
 
 import { type Size } from 'src/presentation/style'
-import type { Colors } from 'src/presentation/style/colors'
 import { TextComponent } from './style'
+import type { Colors } from 'src/presentation/style/colors'
 
 export interface TypographyProps extends TextProps {
   strong?: boolean

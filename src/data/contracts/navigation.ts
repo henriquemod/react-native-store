@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export namespace Navigation {
-  export interface Route {
+  export interface Route<Params extends Record<string, any> = any> {
     key: string
     name: string
-    params: any
+    params: Params
   }
   export interface Navigation {
     goBack: () => void
@@ -24,8 +24,8 @@ export namespace Navigation {
     // setOptions: (options: any) => void
     // setParams: (params: any) => void
   }
-  export interface Props {
+  export interface Props<RouteParams extends Record<string, any> = any> {
     navigation: Navigation
-    route: Route
+    route: Route<RouteParams>
   }
 }

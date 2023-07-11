@@ -11,6 +11,7 @@ import {
 } from 'src/presentation/components/icons'
 import { makeHomeScreen } from '../factories/home-factory'
 import { type Navigation } from 'src/data/contracts'
+import { makeProductScreen } from '../factories'
 
 const Tab = createBottomTabNavigator()
 
@@ -79,6 +80,14 @@ function TabNavigation() {
         }}
       >
         {a => makeHomeScreen(a as Navigation.Props)}
+      </Tab.Screen>
+      <Tab.Screen
+        options={{
+          tabBarItemStyle: { display: 'none', height: 0 },
+        }}
+        name="Product"
+      >
+        {a => makeProductScreen(a as Navigation.Props)}
       </Tab.Screen>
     </Tab.Navigator>
   )

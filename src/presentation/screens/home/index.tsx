@@ -50,7 +50,7 @@ const HomeScreen = (props: NHomeScreen.Props) => {
   }
 
   const handlePressProduct = (product: Business.Product) => {
-    props.navigation.navigate('Home', { product })
+    props.navigation.navigate('Product', { product })
   }
 
   return (
