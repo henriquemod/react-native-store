@@ -1,6 +1,7 @@
 export type Colors =
   | 'white'
   | 'orange'
+  | 'orangeStrong'
   | 'blue'
   | 'gray'
   | 'lightGray'
@@ -14,6 +15,7 @@ const color: ColorSchema = {
   black: '#000000',
   white: '#ffffff',
   orange: '#F17547',
+  orangeStrong: '#F16A26',
   blue: '#1383F1',
   gray: '#D8D3D3',
   darkGray: '#808080',

@@ -15,6 +15,8 @@ import { makeProductScreen } from '../factories'
 
 const Tab = createBottomTabNavigator()
 
+const ImmersiveRoutes = ['Product']
+
 function TabNavigation() {
   const tabBarIconProps = (focused: boolean): TIconProps => ({
     height: appSizes.size.xs,
@@ -24,23 +26,30 @@ function TabNavigation() {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{
-        tabBarLabelStyle: {
-          display: 'none',
-        },
-        headerStyle: {
-          height: 0,
-        },
-        headerTitleStyle: {
-          display: 'none',
-        },
-        tabBarIconStyle: {
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
+      screenOptions={props => {
+        console.log(props.route.name)
+        const isImmersiveRoute = ImmersiveRoutes.includes(props.route.name)
+        return {
+          tabBarLabelStyle: {
+            display: 'none',
+          },
+          headerStyle: {
+            height: 0,
+          },
+          headerTitleStyle: {
+            display: 'none',
+          },
+          tabBarIconStyle: {
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          },
+          tabBarStyle: {
+            display: isImmersiveRoute ? 'none' : 'flex',
+          },
+        }
       }}
     >
       <Tab.Screen
