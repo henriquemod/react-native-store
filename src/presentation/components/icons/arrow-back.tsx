@@ -21,6 +21,8 @@ const ArrowBack = (props: TIconProps) => {
       height={height}
       width={width}
       viewBox="0 0 486.975 486.975"
+      stroke={appColors[color]}
+      strokeWidth={28}
     >
       <Path
         d="M473.475,230.025h-427.4l116-116c5.3-5.3,5.3-13.8,0-19.1c-5.3-5.3-13.8-5.3-19.1,0l-139,139c-5.3,5.3-5.3,13.8,0,19.1

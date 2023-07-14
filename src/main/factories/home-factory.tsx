@@ -1,5 +1,5 @@
 import * as React from 'react'
-import HomeScreen from 'screens/home'
+import { HomeScreen } from 'screens'
 import { makeAxiosHttpClient } from './axios-factory'
 import makeExpoStorage from './expo-storage-factory'
 import type { Navigation } from 'src/data/contracts'

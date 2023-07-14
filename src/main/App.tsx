@@ -4,6 +4,7 @@ import { setStatusBarHidden } from 'expo-status-bar'
 import React from 'react'
 
 import TabNavigation from './routes/tab-routes'
+import { AppProvider } from 'src/presentation/context/app-context'
 
 export default function App() {
   React.useEffect(() => {
@@ -20,10 +21,10 @@ export default function App() {
   }, [])
 
   return (
-    <>
+    <AppProvider>
       <NavigationContainer>
         <TabNavigation />
       </NavigationContainer>
-    </>
+    </AppProvider>
   )
 }

@@ -4,11 +4,14 @@ export type Colors =
   | 'orangeStrong'
   | 'blue'
   | 'gray'
+  | 'grayVeryLight'
   | 'lightGray'
   | 'darkGray'
-  | 'grayer'
   | 'black'
   | 'yellow'
+  | 'dust'
+  | 'rose'
+  | 'blueBaby'
 type ColorSchema = { [key in Colors]: string }
 
 const color: ColorSchema = {
@@ -19,9 +22,12 @@ const color: ColorSchema = {
   blue: '#1383F1',
   gray: '#D8D3D3',
   darkGray: '#808080',
-  grayer: '#808080',
   lightGray: '#F2F2F2',
+  grayVeryLight: '#D9E0E6',
   yellow: '#FCBF0C',
+  dust: '#B0AB7B',
+  rose: '#CC6369',
+  blueBaby: '#D9E0E6',
 }
 
 export default color

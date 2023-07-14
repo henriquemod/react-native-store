@@ -17,6 +17,7 @@ export const BoxComponent = styled.View<BoxProps>`
         ? props.width
         : props.width.toString() + 'px'
     };`}
+  ${props => props.fullWidth && `width: 100%;`}
   ${props =>
     props.height &&
     `height: ${

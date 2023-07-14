@@ -21,6 +21,7 @@ import {
   PriceContainer,
   PriceRow,
 } from './style'
+import useAppContext from 'src/presentation/hooks/use-app-context'
 
 interface RouteParams {
   product: Business.Product
@@ -33,7 +34,18 @@ export namespace NProductScreen {
 }
 
 const ProductScreen = (props: NProductScreen.Props) => {
+  const { insertOrder } = useAppContext()
   const { route, navigation } = props
+  const handleAddToCart = () => {
+    insertOrder({
+      id: Math.random().toString(),
+      product: route.params.product,
+      quantity: 1,
+      total: route.params.product.price,
+    })
+    navigation.navigate('Order')
+  }
+
   const prod = route.params.product
   return (
     <SafeAreaView>
@@ -89,7 +101,12 @@ const ProductScreen = (props: NProductScreen.Props) => {
             </Typography>
             <Typography color="darkGray">{prod.description}</Typography>
           </AboutContainer>
-          <Button color="orangeStrong" width="100%" height={appSizes.size.xl}>
+          <Button
+            color="orangeStrong"
+            width="100%"
+            height={appSizes.size.xl}
+            onPress={handleAddToCart}
+          >
             <Typography strong>Add to cart</Typography>
           </Button>
         </BottomContainer>

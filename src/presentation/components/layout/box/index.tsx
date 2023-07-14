@@ -9,6 +9,7 @@ export interface BoxProps extends ViewProps {
   padding?: React.CSSProperties['padding']
   width?: React.CSSProperties['width']
   height?: React.CSSProperties['height']
+  fullWidth?: boolean
 }
 
 const Box = (props: BoxProps) => {

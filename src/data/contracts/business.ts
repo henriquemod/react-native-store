@@ -19,6 +19,11 @@ export namespace Business {
       count: number
     }
   }
+  export interface Order {
+    id: string
+    product: Pick<Product, 'id' | 'title' | 'price' | 'image'>
+    quantity: number
+  }
   export type Category =
     | 'electronics'
     | 'jewelery'
