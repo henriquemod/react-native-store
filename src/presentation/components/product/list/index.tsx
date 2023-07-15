@@ -9,6 +9,7 @@ export namespace NProductList {
   export interface Props {
     data: Business.Product[]
     onPress: (product: Business.Product) => void
+    onFavoritePress: (product: Business.Product) => void
   }
 }
 
@@ -31,9 +32,13 @@ const ProductList = (props: NProductList.Props) => {
         const handlePress = () => {
           props.onPress(item)
         }
+        const handleFavoritePress = () => {
+          props.onFavoritePress(item)
+        }
         return (
           <ProductCard
             onPress={handlePress}
+            onFavoritePress={handleFavoritePress}
             product={item}
             touchableOpacityProps={{
               style: {

@@ -17,16 +17,20 @@ import {
 } from './style'
 import type { Business } from 'src/data/contracts'
 import CARD_DIMENSIONS from './dimensions'
+import { useAppContext } from 'src/presentation/hooks'
 
 export namespace NProductCard {
   export interface Props {
     product: Business.Product
     touchableOpacityProps?: Partial<TouchableOpacityProps>
     onPress: () => void
+    onFavoritePress: () => void
   }
 }
 
 const ProductCard = (props: NProductCard.Props) => {
+  const { favorite } = useAppContext()
+  const isFavorite = !!favorite.findFavorite(props.product)
   return (
     <TouchableOpacity
       onPress={props.onPress}
@@ -49,16 +53,17 @@ const ProductCard = (props: NProductCard.Props) => {
             <Button
               width={appSizes.size.xxs2}
               height={appSizes.size.xxs2}
+              onPress={props.onFavoritePress}
               rounded
               color="lightGray"
               padding={appSizes.size.xxxs}
               style={{
                 borderWidth: 2,
-                borderColor: appColors.gray,
+                borderColor: isFavorite ? appColors.rose : appColors.gray,
               }}
             >
               <HeartIcon
-                color="gray"
+                color={isFavorite ? 'rose' : 'gray'}
                 width={appSizes.size.xxs}
                 height={appSizes.size.xxs}
               />

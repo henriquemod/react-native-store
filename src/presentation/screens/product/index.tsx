@@ -22,6 +22,7 @@ import {
   PriceRow,
 } from './style'
 import useAppContext from 'src/presentation/hooks/use-app-context'
+import { adaptProductIntoOrderItem } from 'src/presentation/helpers/adapters'
 
 interface RouteParams {
   product: Business.Product
@@ -34,15 +35,11 @@ export namespace NProductScreen {
 }
 
 const ProductScreen = (props: NProductScreen.Props) => {
-  const { insertOrder } = useAppContext()
   const { route, navigation } = props
+  const { order } = useAppContext()
   const handleAddToCart = () => {
-    insertOrder({
-      id: Math.random().toString(),
-      product: route.params.product,
-      quantity: 1,
-      total: route.params.product.price,
-    })
+    const orderItem = adaptProductIntoOrderItem(route.params.product)
+    order.insertOrder(orderItem)
     navigation.navigate('Order')
   }
 

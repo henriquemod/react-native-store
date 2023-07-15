@@ -2,23 +2,19 @@ import * as React from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 
 import type { Business } from 'src/data/contracts/business'
-import generateColors from 'src/presentation/helpers/color-generator'
 import { appSpacings } from 'src/presentation/style'
-import OrderCard from '../card'
+import FavoriteCard from '../card'
+import generateColors from 'src/presentation/helpers/color-generator'
 
-export namespace NOrderList {
+export namespace NFavoriteList {
   export interface Props {
-    data: Business.Order[]
-    onIncrement: (order: Business.Order) => void
-    onDecrement: (order: Business.Order) => void
-  }
-  export interface ColorSchema {
-    color: string
-    opacity: number
+    data: Business.Product[]
+    onBuyNowPress: (product: Business.Product) => void
+    onRemoveFavoritePress: (product: Business.Product) => void
   }
 }
 
-const OrderList = (props: NOrderList.Props) => {
+const FavoriteList = (props: NFavoriteList.Props) => {
   const listSize = props.data.length
 
   const colorSchema = React.useMemo(() => {
@@ -38,20 +34,20 @@ const OrderList = (props: NOrderList.Props) => {
         width: '100%',
       }}
       renderItem={({ item, index }) => {
-        const handleIncrement = () => {
-          props.onIncrement(item)
+        const handleBuyNowPress = () => {
+          props.onBuyNowPress(item)
         }
-        const handleDecrement = () => {
-          props.onDecrement(item)
+
+        const handleRemoveFavoritePress = () => {
+          props.onRemoveFavoritePress(item)
         }
 
         return (
-          <OrderCard
-            currentQuantity={item.quantity}
-            decrement={handleDecrement}
-            increment={handleIncrement}
+          <FavoriteCard
+            onAdd={handleBuyNowPress}
+            onRemove={handleRemoveFavoritePress}
             schema={colorSchema[index]}
-            order={item}
+            favorite={item}
           />
         )
       }}
@@ -60,4 +56,4 @@ const OrderList = (props: NOrderList.Props) => {
   )
 }
 
-export default React.memo(OrderList)
+export default React.memo(FavoriteList)

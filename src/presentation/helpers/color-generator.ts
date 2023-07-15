@@ -1,5 +1,9 @@
 import { appColors } from 'src/presentation/style'
-import type { NOrderList } from '.'
+
+export interface ColorSchema {
+  color: string
+  opacity: number
+}
 
 const AVAILABLE_COLORS = [appColors.dust, appColors.rose, appColors.blueBaby]
 const opacityMap = new Map<string, number>([
@@ -9,7 +13,7 @@ const opacityMap = new Map<string, number>([
 ])
 
 const generateColors = (size: number) => {
-  const colors: NOrderList.ColorSchema[] = []
+  const colors: ColorSchema[] = []
   for (let i = 0; i < size; i++) {
     const colorIndex = i % AVAILABLE_COLORS.length
     const color = AVAILABLE_COLORS[colorIndex]

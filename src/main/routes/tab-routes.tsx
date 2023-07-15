@@ -1,20 +1,23 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createStackNavigator } from '@react-navigation/stack'
 import * as React from 'react'
+import { Easing } from 'react-native'
 
-import { appSizes } from 'src/presentation/style'
-import type { TIconProps } from 'src/presentation/components/icons/men-clothes'
+import { type Navigation } from 'src/data/contracts'
 import {
   FavoritesIcon,
   HomeIcon,
   OrderIcon,
   ProfileIcon,
 } from 'src/presentation/components/icons'
-import { makeHomeScreen } from '../factories/home-factory'
-import { type Navigation } from 'src/data/contracts'
-import { makeOrderScreen, makeProductScreen } from '../factories'
-
-import { createStackNavigator } from '@react-navigation/stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Easing } from 'react-native'
+import type { TIconProps } from 'src/presentation/components/icons/men-clothes'
+import { appSizes } from 'src/presentation/style'
+import {
+  makeFavoriteScreen,
+  makeHomeScreen,
+  makeOrderScreen,
+  makeProductScreen,
+} from '../factories'
 
 const Stack = createStackNavigator()
 
@@ -94,7 +97,7 @@ function TabNavigation() {
                 ),
               }}
             >
-              {a => makeHomeScreen(a as Navigation.Props)}
+              {a => makeFavoriteScreen(a as Navigation.Props)}
             </Tab.Screen>
             <Tab.Screen
               name="Order"

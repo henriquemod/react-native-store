@@ -1,17 +1,10 @@
 import * as React from 'react'
-import { appColors, appSizes, appSpacings } from 'src/presentation/style'
-import styled from 'styled-components/native'
-import Box from '../../layout/box'
-import Typography from '../../typography'
-import type { NOrderCard } from '.'
-import Button from '../../button'
 import { TouchableOpacity } from 'react-native'
 
-const Container = styled.View`
-  display: flex;
-  flex-direction: row;
-  gap: ${appSizes.sizeRaw.xxs}px;
-`
+import { appColors, appSizes, appSpacings } from 'src/presentation/style'
+import type { NOrderCard } from '.'
+import Box from '../../layout/box'
+import Typography from '../../typography'
 
 const QuantityHandler = (props: NOrderCard.Handlers) => {
   return (

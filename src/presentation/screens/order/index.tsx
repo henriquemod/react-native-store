@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { SafeAreaView } from 'react-native'
 
-import type { Navigation } from 'src/data/contracts'
+import type { Business, Navigation } from 'src/data/contracts'
 import Button from 'src/presentation/components/button'
 import { OrderList } from 'src/presentation/components/order'
 import Typography from 'src/presentation/components/typography'
@@ -22,12 +22,31 @@ export namespace NOrderScreen {
 
 const OrderScreen = (props: NOrderScreen.Props) => {
   const { navigation } = props
-  const { orders } = useAppContext()
+  const { order } = useAppContext()
+
   const totalValue = React.useMemo(() => {
-    return orders.reduce((acc, order) => {
+    return order.orders.reduce((acc, order) => {
       return acc + order.product.price * order.quantity
     }, 0)
-  }, [orders])
+  }, [order.orders])
+
+  const data = React.useMemo(() => {
+    return order.orders
+  }, [order.orders])
+
+  const handleIncrementOrder = React.useCallback(
+    (orderToIncrement: Business.Order) => {
+      order.increaseQuantity(orderToIncrement)
+    },
+    [order],
+  )
+
+  const handleDecrementOrder = React.useCallback(
+    (orderToDecrement: Business.Order) => {
+      order.decreaseQuantity(orderToDecrement)
+    },
+    [order],
+  )
 
   return (
     <SafeAreaView>
@@ -40,8 +59,11 @@ const OrderScreen = (props: NOrderScreen.Props) => {
             My cart
           </Typography>
         </HeaderContainer>
-
-        <OrderList data={orders} />
+        <OrderList
+          onIncrement={handleIncrementOrder}
+          onDecrement={handleDecrementOrder}
+          data={data}
+        />
         <RowContainer>
           <TotalValueRow>
             <Typography color="black" strong>
