@@ -8,7 +8,7 @@ import {
   FavoritesIcon,
   HomeIcon,
   OrderIcon,
-  ProfileIcon,
+  // ProfileIcon,
 } from 'src/presentation/components/icons'
 import type { TIconProps } from 'src/presentation/components/icons/men-clothes'
 import { appSizes } from 'src/presentation/style'
@@ -109,7 +109,7 @@ function TabNavigation() {
             >
               {a => makeOrderScreen(a as Navigation.Props)}
             </Tab.Screen>
-            <Tab.Screen
+            {/* <Tab.Screen
               name="Profile"
               options={{
                 tabBarIcon: props => (
@@ -118,7 +118,7 @@ function TabNavigation() {
               }}
             >
               {a => makeHomeScreen(a as Navigation.Props)}
-            </Tab.Screen>
+            </Tab.Screen> */}
           </Tab.Navigator>
         )}
       </Stack.Screen>
@@ -126,8 +126,6 @@ function TabNavigation() {
       <Stack.Screen name="Product">
         {a => makeProductScreen(a as Navigation.Props)}
       </Stack.Screen>
-
-      {/* Add other Stack.Screen components here if needed */}
     </Stack.Navigator>
   )
 }
